@@ -50,7 +50,8 @@ View(wkEndF)
 #and are Male and Paid a tip of more than x USD. 
 #Specify x yourself PEN and PAPER Note 1=<tip<=10
 
-unique(dfTips$day)
+unique(dfTips$day)  ##the values of the variable day
+unique(dfTips$time)
 
 wkDays=filter(dfTips, day!='Sun' &  day !='Sat')
 head(wkDays)
