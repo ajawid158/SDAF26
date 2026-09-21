@@ -8,6 +8,7 @@ library(ggplot2)
 
 dtTips=read.csv("tips.csv")
 
+#Joint bar chart
 jtable=table(dtTips$sex, dtTips$smoker)
 jtable
 jtable=as.data.frame(jtable)
@@ -74,7 +75,7 @@ ggsave('jointDistTipsSmoker.png')
 
 
 ggplot(dtTips, aes(x=tip, y=sex, fill=sex))+
-  geom_boxplot(color=2, 
+  geom_boxplot(color=3, 
                alpha=0.3, 
                outlier.colour = 'blue', 
                linetype=2, 
@@ -120,7 +121,7 @@ stripchart(tip~sex,
 ggsave('jointboxplotwithpoints.pdf')
 ####+++++++++++++++++++Beeswarm graph
 
-install.packages('ggbeeswarm')
+#install.packages('ggbeeswarm')
 
 library(ggbeeswarm)
 #smoker[y, n] tip
@@ -138,7 +139,7 @@ g0+geom_point()
 
 #modifications inside geom_point
 g0=ggplot(dtTips, aes(x=total_bill, y=tip))
-g0+geom_point(color=1, shape=1, size=2)
+g0+geom_point(color=2, shape=1, size=2)
 
 names(dtTips)
 #Modifications in aes
@@ -160,10 +161,11 @@ g0=ggplot(dtTips, aes(x=total_bill, y=tip,color=time, size=size))
 g0+geom_point()+
   facet_wrap(~day)
 
-g0=ggplot(dtTips, aes(x=total_bill, y=tip, color=time, size=size))
+g0=ggplot(dtTips, aes(x=total_bill, y=tip, color=time))
 g0+geom_point()+
   facet_wrap(~smoker)
 
+View(dtTips)
 ##Adding Regression line
 g0=ggplot(dtTips, aes(x=total_bill, y=tip))
 g0+geom_smooth()
@@ -189,7 +191,7 @@ g1=g0+geom_smooth(se=FALSE)+
 g1
 
 ##Export as html and ggplotly
-install.packages('plotly')
+#install.packages('plotly')
 library(plotly)
 
 g2=plotly::ggplotly(g1)
