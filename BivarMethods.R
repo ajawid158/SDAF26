@@ -36,8 +36,9 @@ names(dtTips)
 genGroup=group_by(dtTips, sex)
 summarise(genGroup, mean(tip), sd(tip), min(tip), max(tip))
 
-ftip=dfTips$tip[dfTips$sex=="Female"]
-mtip=dfTips$tip[dfTips$sex=="Male"]
+
+ftip=dtTips$tip[dtTips$sex=="Female"]
+mtip=dtTips$tip[dtTips$sex=="Male"]
 
 #Joint Density
 
@@ -65,6 +66,7 @@ summarise(dayGroup, mean(tip), sd(tip), min(tip), max(tip))
 
 #Joint density
 
+
 thTip=dtTips$tip[dtTips$day=="Thur"]
 frTip=dtTips$tip[dtTips$day=="Fri"]
 satTip=dtTips$tip[dtTips$day=="Sat"]
@@ -86,13 +88,15 @@ summary(aov(dtTips$tip~dtTips$day))
 dte=read.csv("employee.csv")
 head(dte)
 View(dte)
-
+names(dte)
 #Relation betweeen Spending and Salary of theses employees
 #Biuld a model of spending and Salary 
 plot(dte$Salary, dte$Spending)
+
 scatter.smooth(dte$Salary, dte$Spending)
+
 cor(dte$Salary, dte$Spending)
 cov(dte$Salary, dte$Spending)
 
-L1=lm(Spending~Salary, data=dte)
-summary(L1)
+#L1=lm(Spending~Salary, data=dte)
+#summary(L1)
